@@ -12,6 +12,7 @@ public:
     static void drawCircle(float radius) {
         glBegin(GL_TRIANGLE_FAN);
         glVertex2f(0.0f, 0.0f); // punto centro del circulo
+        glColor3f(0.0,0.0,1.0);
         for (int i = 0; i <= 360; i++) {
             float angle = 3.14159f * i / 180.0f; //Convierte a radianes
             glVertex2f(radius * cos(angle), radius * sin(angle));
