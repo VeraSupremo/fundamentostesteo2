@@ -1,6 +1,6 @@
 #include <iostream>
 #include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 #include <math.h>
 #include <random>
 //#include <GL/glut.h>
