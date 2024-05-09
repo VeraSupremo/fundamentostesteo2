@@ -44,10 +44,10 @@ public:
 
 class Pantalla {
 public:
-    static void display(GLFWwindow* window) {
+    static void display(GLFWwindow* window,Color color) {
         glClear(GL_COLOR_BUFFER_BIT); // Limpia la pantalla
         int width, height;
-        Color color(RC(),RC(),RC());
+        
         glfwGetFramebufferSize(window, &width, &height); // Obtiene el tamaño del frame
         glViewport(0, 0, width, height);
         glMatrixMode(GL_PROJECTION); // Selecciona la matriz
@@ -78,6 +78,7 @@ void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
 }
 
 int main() {
+    Color color(RC(),RC(),RC());
     // Inicializa GLFW
     if (!glfwInit()) {
         return -1;
@@ -96,7 +97,7 @@ int main() {
 
     while (!glfwWindowShouldClose(window)) {
         // Renderiza la pantalla
-        Pantalla::display(window);
+        Pantalla::display(window,color);
         glfwPollEvents();
     }
     glfwTerminate();
