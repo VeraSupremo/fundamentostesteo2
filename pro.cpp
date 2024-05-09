@@ -7,6 +7,27 @@
 const unsigned int SCR_WIDTH=800;
 const unsigned int SCR_HEIGHT=600;
 
+const char *vertexShaderSource ="#version 410 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "uniform float scale;\n"
+    "void main()\n"
+    "{\n"
+    "gl_Position = vec4(aPos*scale, 1.0);\n"
+    "}\n\0";
+
+const char *fragmentShaderSource = "#version 410 core\n"
+    "out vec4 FragColor;\n"
+    "uniform vec4 ourColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = ourColor;\n"
+    "}\n\0";
+unsigned int shaderProgram;
+GLuint uniID, ourColorID;
+GLfloat escala = 1.0f, aumento = 0.1f;
+float greenValue;
+int vertexColorLocation;
+
 class Circulo{
     public:    
         double X,Y,A,H;//cordenada X, Coordenada Y, Alto, Ancho.
