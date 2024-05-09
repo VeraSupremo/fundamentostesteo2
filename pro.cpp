@@ -1,7 +1,7 @@
+//#include "glad/glad.h"
 #include <GLFW/glfw3.h> // Para la ventana y el manejo de eventos (GLFW)
 #include <cmath>
 #include <iostream>
-//#include "glad/glad.h"
 #include <math.h>
 #include <random>
 
@@ -66,23 +66,16 @@ int main() {
         glfwTerminate();
         return -1;
     }
-
-    //ventana como actual
+                                              //ventana como actual
     glfwMakeContextCurrent(window);
-
-    // Configura el callback de teclado
+                                             // Configura el callback de teclado
     glfwSetKeyCallback(window, keyboard);
 
     while (!glfwWindowShouldClose(window)) {
         // Renderiza la pantalla
         Pantalla::display(window);
-
-        // Verifica y llama a los eventos
         glfwPollEvents();
     }
-
-    // Termina GLFW
     glfwTerminate();
-
     return 0;
 }
