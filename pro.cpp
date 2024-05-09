@@ -92,8 +92,8 @@ void Circulo :: change_Size(double cambio,double width,double height,int opcion)
 Circulo::~Circulo(){}
 
 Ventana::Ventana(){
-    width=700.0f;
-    height=500.0f;
+    width=300.0f;
+    height=250.0f;
 }
 Ventana::Ventana(float _width, float _height){
     width=_width;
