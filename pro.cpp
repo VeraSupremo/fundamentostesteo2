@@ -28,9 +28,10 @@ class Color{
         BLUE = b;
     }
 };
+Color color(RC(),RC(),RC());
 class Dibujo {
 public:
-    static void drawCircle(float radius, Color color) {
+    static void drawCircle(float radius) {
         glBegin(GL_TRIANGLE_FAN);
         glVertex2f(0.0f, 0.0f); // punto centro del circulo
         glColor3f(color.RED,color.GREEN,color.BLUE);
@@ -44,7 +45,7 @@ public:
 
 class Pantalla {
 public:
-    static void display(GLFWwindow* window,Color color) {
+    static void display(GLFWwindow* window) {
         glClear(GL_COLOR_BUFFER_BIT); // Limpia la pantalla
         int width, height;
         
@@ -56,7 +57,7 @@ public:
         glMatrixMode(GL_MODELVIEW); 
         glLoadIdentity(); // Reinicia la matriz 
         glTranslatef(width / 2, height / 2, 0.0f); // Mueve al centro del circulo
-        Dibujo::drawCircle(circleRadius,color); //dibuja
+        Dibujo::drawCircle(circleRadius); //dibuja
         glfwSwapBuffers(window); 
     }
 };
@@ -73,12 +74,20 @@ void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
                 if (circleRadius < 0.0f) //no permite radio negativo
                     circleRadius = 0.0f;
                 break;
+            case GLFW_KEY_1:
+                color.RED += 0.2;
+                if(color.RED>=1.0) color.RED=1.0;
+                break;
+            case GLFW_KEY_4:
+                color.RED -=0.2;
+                if(color.RED<=0.0) color.RED=0.0;
+                break;
         }
     }
 }
 
 int main() {
-    Color color(RC(),RC(),RC());
+    
     // Inicializa GLFW
     if (!glfwInit()) {
         return -1;
@@ -97,7 +106,7 @@ int main() {
 
     while (!glfwWindowShouldClose(window)) {
         // Renderiza la pantalla
-        Pantalla::display(window,color);
+        Pantalla::display(window);
         glfwPollEvents();
     }
     glfwTerminate();
