@@ -45,7 +45,7 @@ public:
 
 class Pantalla {
 public:
-    static void display(GLFWwindow* window) {
+    static void display(GLFWwindow* window){
         glClear(GL_COLOR_BUFFER_BIT); // Limpia la pantalla
         int width, height;
         
@@ -64,8 +64,8 @@ public:
 
 
 void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    if (action == GLFW_PRESS) {
-        switch (key) {
+    if(action == GLFW_PRESS){
+        switch(key){
             case GLFW_KEY_A:
                 circleRadius += 10.0f; // aumenta el radio
                 break;
@@ -102,16 +102,16 @@ void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
     }
 }
 
-int main() {
+int main(){
     
     // Inicializa GLFW
-    if (!glfwInit()) {
+    if(!glfwInit()){
         return -1;
     }
 
     // Crea una ventana
     GLFWwindow* window = glfwCreateWindow(800, 600, "Círculo en OpenGL con GLFW", NULL, NULL);
-    if (!window) {
+    if(!window){
         glfwTerminate();
         return -1;
     }
@@ -120,8 +120,8 @@ int main() {
                                              // Configura el callback de teclado
     glfwSetKeyCallback(window, keyboard);
 
-    while (!glfwWindowShouldClose(window)) {
-        // Renderiza la pantalla
+    while(!glfwWindowShouldClose(window)){
+        // Renderizado
         Pantalla::display(window);
         glfwPollEvents();
     }
