@@ -82,6 +82,22 @@ void keyboard(GLFWwindow* window, int key, int scancode, int action, int mods) {
                 color.RED -=0.2;
                 if(color.RED<=0.0) color.RED=0.0;
                 break;
+            case GLFW_KEY_2:
+                color.GREEN += 0.2;
+                if(color.GREEN>=1.0) color.GREEN=1.0;
+                break;
+            case GLFW_KEY_5:
+                color.GREEN -=0.2;
+                if(color.GREEN<=0.0) color.GREEN=0.0;
+                break;
+            case GLFW_KEY_3:
+                color.BLUE += 0.2;
+                if(color.BLUE>=1.0) color.BLUE=1.0;
+                break;
+            case GLFW_KEY_6:
+                color.BLUE -=0.2;
+                if(color.BLUE<=0.0) color.BLUE=0.0;
+                break;
         }
     }
 }
