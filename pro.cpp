@@ -6,13 +6,34 @@
 #include <random>
 
 float circleRadius = 50.0f; // Radio base
+float RC(){// Random Color
+    std::random_device rd;
+    std::uniform_real_distribution<float> random(0.0,1.0);
+    return random(rd);   
+}
 
+class Color{
+    public:
+    float RED;
+    float GREEN;
+    float BLUE;
+    Color(){
+        RED=1.0;
+        GREEN=1.0;
+        BLUE=1.0;
+    }
+    Color(float r,float g,float b){
+        RED = r;
+        GREEN = g;
+        BLUE = b;
+    }
+};
 class Dibujo {
 public:
-    static void drawCircle(float radius) {
+    static void drawCircle(float radius, Color color) {
         glBegin(GL_TRIANGLE_FAN);
         glVertex2f(0.0f, 0.0f); // punto centro del circulo
-        glColor3f(0.0,0.0,1.0);
+        glColor3f(color.RED,color.GREEN,color.BLUE);
         for (int i = 0; i <= 360; i++) {
             float angle = 3.14159f * i / 180.0f; //Convierte a radianes
             glVertex2f(radius * cos(angle), radius * sin(angle));
@@ -26,6 +47,7 @@ public:
     static void display(GLFWwindow* window) {
         glClear(GL_COLOR_BUFFER_BIT); // Limpia la pantalla
         int width, height;
+        Color color(RC(),RC(),RC());
         glfwGetFramebufferSize(window, &width, &height); // Obtiene el tamaño del frame
         glViewport(0, 0, width, height);
         glMatrixMode(GL_PROJECTION); // Selecciona la matriz
@@ -34,7 +56,7 @@ public:
         glMatrixMode(GL_MODELVIEW); 
         glLoadIdentity(); // Reinicia la matriz 
         glTranslatef(width / 2, height / 2, 0.0f); // Mueve al centro del circulo
-        Dibujo::drawCircle(circleRadius); //dibuja
+        Dibujo::drawCircle(circleRadius,color); //dibuja
         glfwSwapBuffers(window); 
     }
 };
