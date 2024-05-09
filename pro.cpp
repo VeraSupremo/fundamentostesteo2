@@ -1,5 +1,5 @@
 //#include "glad/glad.h"
-#include <GLFW/glfw3.h> // Para la ventana y el manejo de eventos (GLFW)
+#include "GLFW/glfw3.h" // Para la ventana y el manejo de eventos (GLFW)
 #include <cmath>
 #include <iostream>
 #include <math.h>
